@@ -1,0 +1,53 @@
+﻿@*@model project74.Models.image*@
+@model IEnumerable<project74.Models.image>
+
+@{
+    ViewBag.Title = "Imgindex";
+}
+
+<div class="container">
+    <h2>Img index</h2>
+    <hr>
+    <h3 style="text-align: center; color: #C4698A;font-family: 'Dancing Script', cursive">
+        @Html.ActionLink("Create New", "Create")
+    </h3>
+    <table class="table">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.package.p_name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.img_url)
+            </th>
+            <th></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.package.p_name)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.img_url)*@
+                    @if (item.img_url != null)
+                    {
+                        <img src="~/attach/@item.img_url" width="100" height="100" />
+                    }
+                    else
+                    {
+                        <img src="~/attach/image.png" width="100" height="100" />
+                    }
+
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Editimg", new { id = item.img_id }) |
+                    @Html.ActionLink("Details", "Imgdetails", new { id = item.img_id }) |
+                    @*<a href="/images/deleteimg/@item.img_id" onclick="return confirm('are you sure to delete this image')">Delete</a>*@
+                    @Html.ActionLink("Delete", "Deleteimg", new { id = item.img_id })
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>

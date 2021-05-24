@@ -1,0 +1,31 @@
+﻿
+@{
+    ViewBag.Title = "editpack";
+}
+
+
+<section id="vendors">
+    <div class="container">
+        <div class="row" style="margin-top:40px">
+
+            <div class="container p-5">
+                <div class="row">
+
+                    <div class="col-1"></div>
+                    <div class="col-md-7 col-sm-11">
+                        <form class="form" method="post" enctype="multipart/form-data">
+                            <h2 class="form_title title">Edit Your Package</h2>
+
+                            <input class="form-control w-75 m-1" value="@Model.p_name" name="p_name" type="text" placeholder="Fisrt Name" style="color:black;" required>
+                            <input class="form-control w-75 m-1" value="@Model.p_desc" type="text" name="p_desc" placeholder="Last Name" style="color:black;">
+                            <label for="image_id" class="d-inline-block pl-2">Upload image</label>
+                            <input class="my-2 h-75" name="image_id" type="file">
+                            <br />
+                            <input type="submit" value="Save" style="background-color: #C4698A;" class="btn text-white m-1" />
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

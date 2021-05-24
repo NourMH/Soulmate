@@ -1,0 +1,49 @@
+﻿@model project74.Models.image
+
+@{
+    ViewBag.Title = "Deleteimg";
+}
+
+
+<div class="container">
+    <h2>Delete img</h2>
+
+    <h3>Are you sure you want to delete this?</h3>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.package.p_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.package.p_name)
+        </dd>
+        <br>
+        <dt>
+            @Html.DisplayNameFor(model => model.img_url)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.img_url)*@
+            @if (Model.img_url != null)
+            {
+                <img src="~/attach/@Model.img_url" width="300" height="300" />
+            }
+            else
+            {
+                <img src="~/attach/image.png" width="300" height="300" />
+            }
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" style="background-color: #C4698A"/> |
+            @Html.ActionLink("Back to List", "Imgindex")
+        </div>
+    }
+</div>

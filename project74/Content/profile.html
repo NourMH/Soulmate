@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hamburger Menu</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- adds jQuery libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <!-- adds ajax and bootstrap libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <!-- adds bootstrap libraries -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css">
+    <style type="text/css">
+        .p {
+            border: 1px solid blue;
+            color: green;
+        }
+
+        .navbar-header {
+            background-color: #C4698A;
+            background-image: none;
+        }
+
+        #menu {
+            background-color: #C4698A;
+            background-image: none;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-inverse navbar-static-top" role="navigation" style="background-color: #C4698A;">
+
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#" style="color:white;">Soulmate</a>
+                <button type="button" class="navbar-toggle collapsed"
+                        data-toggle="collapse" data-target="#menu">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span> <span class="icon-bar"></span>
+                </button>
+            </div>
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="collapse navbar-collapse" id="menu">
+                <!--nav navbar-nav used to sets the navigation bar size( either increase or reduce) -->
+                <ul class="nav navbar-nav">
+                    <li><a href="#" style="color:white;">Home</a></li>
+                    <li><a href="#" style="color:white;">Add Package</a></li>
+                    <li><a href="#" style="color:white;">My Profile</a></li>
+                    <li><a href="#" style="color:white;">Sign out</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+
+    <br>
+    <br>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-3">
+                <h2>Category</h2>
+            </div>
+            <div class="col-8">
+                <select class="dropdown form-control w-75 m-1">
+                    <option>Category</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="col-3" >
+                <h2>Package</h2>
+
+            </div>
+
+        </div>
+        <div class="row" >
+            <div class="col-3"></div>
+            <form class="form col-8" id="a-form" method="" action="login.html">
+                <h5>Name</h5>
+                <input class="form-control w-75 m-1" name="Packagename" type="text" placeholder="Package Name">
+                <h5>Discription</h5>
+                <textarea name="descrip" rows="5" cols="90" class="form-control w-75 m-1"
+                          placeholder="Description" id="message" required
+                          data-validation-required-message="Please enter your message" minlength="5"
+                          data-validation-minlength-message="Min 5 characters"
+                          maxlength="999" style="resize:none"></textarea>
+
+                <label for="image" class="d-inline-block pl-2">Upload image</label>
+                <input class="my-2 h-15" name="image" type="file">
+                <button class="btn text-white m-1" style="background-color:#C4698A;">Upload</button>
+            </form>
+        </div>
+    </div>
+    </div>
+    <center><button class="btn text-white m-1" style="background-color:#C4698A;"> Add Package</button></center>
+
+
+    <script src="../../bootstrap-4.6.0-dist/jquery-3.5.1.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-Piv4xVNRyMGpqkS2by6br4gNJ7DXjqk09RmUpJ8jgGtD7zP9yug3goQfGII0yAns" crossorigin="anonymous"></script>
+
+</body>
+</html>

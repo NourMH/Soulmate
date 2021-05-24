@@ -1,0 +1,42 @@
+﻿@model project74.Models.image
+
+@{
+    ViewBag.Title = "Imgdetails";
+}
+
+<div class="container" style="margin-top:5em;">
+    <h2>Img details</h2>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.package.p_name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.package.p_name)
+        </dd>
+        <br>
+        <dt>
+            @Html.DisplayNameFor(model => model.img_url)
+        </dt>
+
+        <dd>
+            @*@Html.DisplayFor(model => model.img_url)*@
+            @if (Model.img_url != null)
+            {
+                <img src="~/attach/@Model.img_url" width="300" height="300" />
+            }
+            else
+            {
+                <img src="~/attach/image.png" width="300" height="300" />
+            }
+        </dd>
+
+    </dl>
+
+        <p>
+            @Html.ActionLink("Edit", "Editimg", new { id = Model.img_id }) |
+            @Html.ActionLink("Back to List", "Imgindex")
+        </p>
+    
+</div>

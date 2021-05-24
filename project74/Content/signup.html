@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./css/bootstrap1.min.css" />
+    <link rel="stylesheet" href="./css/sstyle.css" />
+    
+
+</head>
+<body>
+    <div class="container p-5">
+        <div class="row">
+            <div class="col-md-4 img col-sm-1 " >
+                
+
+            </div>
+            <div class="col-1"></div>
+            <div class="col-md-7 col-sm-11">
+                <form class="form" id="a-form" method="" action="login.html">
+                    <h2 class="form_title title">Create Account</h2>
+                        
+                        <input class="form-control w-75 m-1" name="fname" type="text" placeholder="Fisrt Name">
+                        <input class="form-control w-75 m-1" type="text" name="Lname" placeholder="Last Name">
+                        <input class="form-control w-75 m-1" name="username" type="text" placeholder="User Name">
+                        <input class="form-control w-75 m-1" name="password" type="password" placeholder="Password">
+                        <input class="form-control w-75 m-1" name="mobile" type="password" placeholder="Mobile">
+                        <label for="image" class="d-inline-block pl-2">Upload image</label>
+                        <input class="my-2 h-75" name="image" type="file" >
+                        <select class="dropdown form-control w-75 m-1" >
+                            <option>Category</option>
+                            <option>2</option>
+                            <option>3</option>
+                            <option>4</option>
+                            <option>5</option>
+                        </select>
+                        <textarea name="descrip" rows="5" cols="90" class="form-control w-75 m-1" 
+                        placeholder="Description" id="message" required
+                        data-validation-required-message="Please enter your message" minlength="5" 
+                        data-validation-minlength-message="Min 5 characters" 
+                        maxlength="999" style="resize:none"></textarea>
+                        
+                        <input type="button" class="btn text-white m-1" value="Location"/>
+                        <button class="btn text-white m-1">SIGN UP</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

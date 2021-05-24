@@ -1,0 +1,81 @@
+﻿@model project74.Models.user
+@{
+    ViewBag.Title = "addcat";
+    var flag = false;
+    int count = 0;
+}
+<section id="vendors">
+    <div class="container">
+        <div class="row" style="margin-top:40px">
+            <h2 class="text-center">Add Category</h2>
+            <div class="col-1"></div>
+            <div class="col-md-8 col-sm-11 col-lg-12">
+
+                <form class="form" method="post" enctype="multipart/form-data">
+                    <label style="color: gray;font-family: 'Dancing Script', cursive;font-size:20px; padding-left:120px">Category</label><br />
+                    <center>
+                        <select  id="ddlViewBy" class="bootstrap-select form-group m-1" name="cat_id" style="color:gray;width:79%;height:3em;border: 1px solid #C4698A;">
+                            @*@foreach (project74.Models.category item in ViewBag.cat)
+                                {
+                                    <option value="@item.cat_id">@item.cat_name</option>
+                                }*@
+
+                            @foreach (project74.Models.category cat in ViewBag.cat)
+                            {
+                                flag = true;
+                                foreach (project74.Models.user_cat usercat in ViewBag.usercat)
+                                {
+                                    if (cat.cat_id == usercat.cat_id)
+                                    {
+                                        flag = false;
+                                    }
+                                }
+
+                                if (flag)
+                                {
+                                    count++;
+                                    <option value="@cat.cat_id">@cat.cat_name</option>
+                                    flag = true;
+                                }
+                            }
+                        </select>
+                        <br /><br>
+                        <textarea   name="description" rows="5" cols="90" class="form-control m-1" style="color: black; resize:none;width: 79%; border: 1px solid #C4698A;"
+                                  placeholder="Description" id="message" required
+                                  data-validation-required-message="Please enter your message" minlength="5"
+                                  data-validation-minlength-message="Min 5 characters"
+                                  maxlength="999"></textarea>
+                        <input   type="submit" id="btn" value="Add" style="background-color: #C4698A;" class="btn text-white m-1" />
+                    </center>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+@section Scripts
+{
+    <script type="text/javascript">
+    /*    function manage(txt) {
+            var bt = document.getElementById('btn');
+            if (txt.value != '') {
+                bt.disabled = false;
+            }
+            else {
+                bt.disabled = true;
+            }
+        }*/
+        var bt = document.getElementById('btn');
+        var e = document.getElementById("ddlViewBy");
+        var hasValue = e.value;
+        console.log(hasValue);
+        if (hasValue == "") {
+            bt.disabled = true;
+        }
+        else
+        {
+            bt.disabled = false;
+        }
+    </script>
+}

@@ -1,0 +1,79 @@
+﻿@model project74.Models.category
+@{ int i = 0;
+    int x = 0;}
+@if (Model != null)
+{
+
+    foreach (project74.Models.user_cat usercat in ViewBag.usercat)
+    {
+
+        foreach (project74.Models.user user in ViewBag.user)
+        {
+            if (user.id == usercat.u_id && Model.cat_id == usercat.cat_id)
+            {
+                i = 0;
+<div class="row">
+    <!-- Carousel container -->
+    <div id="my-pics" class="col-md-4 col-sm-12 carousel slide" data-ride="carousel" style="width:300px;margin:auto;">
+
+        <!-- Content -->
+        <div class="carousel-inner" id="@x" role="listbox">
+
+            @foreach (project74.Models.package pack in ViewBag.pack)
+            {
+                foreach (project74.Models.image img in ViewBag.img)
+                {
+                    if (img.p_id == pack.p_id && pack.cat_id == Model.cat_id && user.id == pack.u_id)
+                    {
+                        i++;
+                        if (i == 1)
+                        {
+    <div class=" item active">
+        <img src="~/attach/@img.img_url" style="display: block;width: max-content;height: 10em" />
+    </div> }
+else
+{
+    <div class=" item ">
+        <img src="~/attach/@img.img_url" style="display:block; width:max-content;height:10em" />
+    </div>                                  }
+
+
+}
+
+}
+}
+        </div>
+
+        <!-- Previous/Next controls -->
+        <a class="left carousel-control" href="#@x" role="button" data-slide="prev">
+            <span class="icon-prev" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="right carousel-control" href="#@x" role="button" data-slide="next">
+            <span class="icon-next" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        @{ x++; }
+    </div>
+    <div class="col-md-1"></div>
+    <div class="col-md-7 mx-md-0 col-10 col-sm-12 text-center">
+        <h3 class="mt-md-5 pt-md-3  pt-0 mt-0"> Name : @user.fname @user.lname</h3>
+        <p class="mt-md-0 pt-md-3  pt-0 mt-0" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Description : @usercat.description</p>
+        <p class="card-text" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Mobile: <span style="font-family: 'Dancing Script', cursive; font-size: 20px;">0</span>@user.mobile </p>
+        @if (user.Adress != null)
+        {<p class="mt-md-0 pt-md-3  pt-0 mt-0" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Adress : @user.Adress</p>}
+        @if (user.loc != null)
+        {<p class="mt-md-0 pt-md-3  pt-0 mt-0" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Location : <u><a href="@user.loc" style="color:blue;"> Go To Location</a></u></p>}
+
+        @Html.ActionLink("View Packeges", $"viewPackages/{@usercat.u_id}", "Home", new { cat_id = usercat.cat_id }, new { @class = "btn btn-outline-pink bg_pink text-white mx-md-0  mt-md-0 pt-md-3 px-5 pt-0 mt-0", style = "border: rgba( 196,105,138,0.7) 1px solid !important; background-color: rgba( 196,105,138,0.7) !important;" })
+    </div>
+
+</div> }
+                    }
+<hr> }
+
+
+            }
+            else
+            {
+<p> no vendors to show</p>}

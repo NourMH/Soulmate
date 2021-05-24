@@ -1,0 +1,163 @@
+﻿@model IEnumerable<project74.Models.package>
+@{int i = 0;
+    int x = 0;}
+@{
+    ViewBag.Title = "packages";
+}
+<style>
+    table {
+        width: 100%
+    }
+
+        table tr {
+            background-color: #f8f8f8;
+            border: 1px solid #ddd;
+            padding: .35em;
+        }
+
+        table th,
+        table td {
+            padding: .625em;
+            text-align: center;
+        }
+
+        table th {
+            font-size: .85em;
+            letter-spacing: .1em;
+            text-transform: uppercase;
+        }
+
+    screen and (max-width: 600px) {
+        table
+
+    {
+        border: 0;
+    }
+
+    table caption {
+        font-size: 1.3em;
+    }
+
+    table thead {
+        border: none;
+        clip: rect(0 0 0 0);
+        height: 1px;
+        margin: -1px;
+        overflow: hidden;
+        padding: 0;
+        position: absolute;
+        width: 1px;
+    }
+
+    table tr {
+        border-bottom: 3px solid #ddd;
+        display: block;
+        margin-bottom: .625em;
+    }
+
+    table td {
+        border-bottom: 1px solid #ddd;
+        display: block;
+        font-size: .8em;
+        text-align: right;
+    }
+
+        table td::before {
+            /*
+    * aria-label has no advantage, it won't be read inside a table
+    content: attr(aria-label);
+    */
+            content: attr(data-label);
+            float: left;
+            font-weight: bold;
+            text-transform: uppercase;
+        }
+
+        table td:last-child {
+            border-bottom: 0;
+        }
+
+    .carousel-inner > .item {
+        transition-duration: .5s;
+       
+    }
+</style>
+
+
+<br>
+<section id="vendors">
+    <div class="container">
+        <div class="row" style="margin-top:40px">
+            <div class="container p-5">
+                @if (Model != null)
+                {
+                <h2 class="text-center">Packages</h2>
+                <table>
+                    <tr>
+                        <th scope="col" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Package Name </th>
+                        <th scope="col" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Description</th>
+                        <th scope="col" style="font-family: 'Dancing Script', cursive; font-size: 20px;">Images</th>
+                    </tr>
+                    @foreach (var item in Model)
+                    {
+                        i = 0;
+                        <tr>
+                            <td style="font-family: 'Dancing Script', cursive; font-size: 26px;">@item.p_name</td>
+                            <td style="font-family: 'Dancing Script', cursive; font-size: 26px;">@item.p_desc</td>
+                            <td style=" width:26em">
+ 
+                                <div id="my-pics" class="col-md-4 carousel slides " data-ride="carousel" style=" width: 300px; margin: auto;">
+                                    <div class="carousel-inner" id="@x" style="height: 10em;" role="listbox">
+                                        @foreach (project74.Models.image img in ViewBag.img)
+                                        {
+
+                                            if (img.p_id == item.p_id)
+                                            {
+
+                                                i++;
+                                                if (i == 1)
+                                                {
+                                        <div class="carousel item active">
+                                            <a href="~/attach/@img.img_url" target="_blank">
+                                                <img src="~/attach/@img.img_url" style="display: block;width: max-content;height: 10em" />
+                                                </a>
+                                        </div>
+                                                }
+                                                else
+                                                {
+                                    <div class="carousel item">
+                                        <a href="~/attach/@img.img_url" target="_blank">
+                                            <img src="~/attach/@img.img_url" style="display:block; width:max-content;height:10em" />
+                                            </a>
+                                    </div>
+                                                }
+                                            }
+                                        }
+
+                                        
+                                    </div>
+                                    <a class="carousel-control left" href="#@x" role="button" data-slide="prev">
+                                        <span class="icon-prev" aria-hidden="true"></span>
+                                    </a>
+                                    <a class="carousel-control right" href="#@x" role="button" data-slide="next">
+                                        <span class=" icon-next" aria-hidden="true"></span>
+                                    </a>
+
+
+                                </div>
+                                
+                            </td>
+                        </tr>
+                        { x++; }
+                    }
+                </table>}
+            else
+            {
+                <h2>There Is No Packages</h2>
+            }
+            </div>
+        </div>
+    </div>
+</section>
+
+

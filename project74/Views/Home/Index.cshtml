@@ -1,0 +1,73 @@
+﻿@model List<project74.Models.category>
+@{
+    ViewBag.Title = "Home Page";
+}
+<div id="#top"></div>
+<section id="home">
+    <div class="banner-container">
+        <!-- Slider -->
+        <div id="main-slider" class="flexslider">
+            <ul class="slides">
+                <li>
+                    <img src="/Content/images/slides/1.jpg" alt="" />
+                    <div class="flex-caption container">
+                        <h3>we will plan <br> the wedding of your Dreams</h3>
+
+                    </div>
+                </li>
+                <li>
+                    <img src="/Content/images/slides/2.jpg" alt="" />
+                    <div class="flex-caption container">
+                        <h3>
+                            we will plan
+                            <br> the wedding of your Dreams
+                        </h3>
+
+
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <!-- end slider -->
+    </div>
+</section>
+<section id="vendors">
+    <div class="container">
+        <div class="heading wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms">
+            <div class="row">
+                <div class="text-center col-sm-8 col-sm-offset-2">
+                    <h2>VENDORS</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua ut enim ad minim veniam</p>
+                </div>
+            </div>
+        </div>
+        <div class="text-center our-vendors">
+            <div class="row">
+                @{int max = 0;
+                    if (ViewBag.size > 6)
+                    { max = 6; }
+                    else
+                    { max = ViewBag.size; }
+
+                for (int i = 0; i < max; i++)
+                {
+
+                    <div class="col-lg-4 ">
+                        <div class="service-icon">
+                            <img src="~/attach/@Model[i].image" />
+                        </div>
+                        <div class="">
+                            <h3>
+                                @Html.ActionLink(@Model[i].cat_name, $"vendors/{@Model[i].cat_id}")
+                            </h3>
+                            <p style="font-size: 18px;">@Model[i].description</p>
+                        </div>
+                    </div>
+                }
+                    }
+            </div>
+            @Html.ActionLink("View More", "vendors", "Home", new { @class = "btn bg-pink" })
+        </div>
+    </div>
+</section>
+

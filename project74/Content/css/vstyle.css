@@ -1,0 +1,68 @@
+@import url(http://fonts.googleapis.com/css?family=Open+Sans:400,700,600);
+@import url(http://fonts.googleapis.com/css?family=Oswald:400,700);
+@import url(https://fonts.googleapis.com/css?family=Dancing+Script:400,700);
+
+*{
+    font-family: 'Open Sans', sans-serif;
+}
+.logo,h2 {
+	font-family: 'Dancing Script', cursive;
+    font-size: 2.5em;
+    font-weight: bold;
+}
+.navbar ,.btn-search,.form-control{
+    border-radius: 0%;
+}
+.active{
+    border: #fff 2px solid;
+    
+}
+.bg_pink{
+background-color: #C4698A;
+}
+.nav-link{
+    font-size: 1.1em;
+    padding: 6px 14px !important;
+    border-radius: 5px;
+    margin: 0px 0px;
+    color: #fff !important;
+    font-family: 'Oswald', sans-serif;
+    font-weight: 400;
+}
+.layer , .vendorsection{
+    height: 300px !important;
+    
+}
+.h-40{
+    height: 40% !important;
+}
+.layer{
+    position:absolute;
+    top: 0px;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.4);
+    z-index: 3;
+}
+.search-vendor{
+    top: 220px;
+    z-index: 99;
+    left: 20%;
+}
+.btn-outline-pink:hover{
+    border: rgba( 196,105,138,0.7) 1px solid !important;
+    background-color: rgba( 196,105,138,0.7) !important;
+}
+
+ul{
+    list-style-type: none;
+}
+ul li span{
+    color: #333;
+    line-height: 2em;
+    display: inline-block;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+ul li span:hover{
+    cursor: pointer;
+}

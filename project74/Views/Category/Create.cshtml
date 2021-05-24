@@ -1,0 +1,99 @@
+﻿@model project74.Models.category
+@{ ViewBag.Title = "Create"; }
+
+<h2 class="text-center " style="margin-top:3em;">Create</h2>
+<div class="w-50 container mx-auto m-5">
+    <form method="post" enctype="multipart/form-data">
+        <div class="form-group">
+            <label for="cat_name">Category Name</label>
+            @Html.TextBoxFor(n => n.cat_name, new { @class = "form-control ", style = "color:black", id = "cat_name", onchange = "checkCatName(this)" })
+
+            @if (ViewBag.ct != null)
+            {
+<label class="text-danger">category name is already taken</label>            }
+        </div>
+        <div id="lblStatus" class="form-group"></div>
+        <div class="form-group">
+            @Html.LabelFor(n => n.description)
+            <textarea name="description" rows="5" cols="90" class="form-control w-75 m-2"
+                      id="description" required
+                      data-validation-required-message="Please enter your message" minlength="5"
+                      data-validation-minlength-message="Min 5 characters"
+                      maxlength="999" style="        resize: none;color:black"></textarea>
+            @Html.ValidationMessageFor(n => n.description, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(n => n.image)
+            <input required type="file" name="image" class="my-2 h-75 px-3 " />
+            @Html.ValidationMessageFor(n => n.image, "", new { @class = "text-danger" })
+        </div>
+        <div class="form-group">
+            <input type="submit" value="Add" name="signup" class="btn bg-pink text-white m-2" />
+
+
+        </div>
+    </form>
+
+</div>
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#cat_name').on('keyup', function ()
+            {
+            $.ajax({
+                type: "POST",
+                url:'@Url.Action("check", "Category")',//  this for calling the web method function in controller.
+                data: '{cat_name: "' + $("#cat_name").val()+ '" }',// user name value
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response);
+                }
+            });
+            });
+            $('#cat_name').on('focus', function ()
+            {
+            $.ajax({
+                type: "POST",
+                url:'@Url.Action("check", "Category")',//  this for calling the web method function in controller.
+                data: '{cat_name: "' + $("#cat_name").val()+ '" }',// user name value
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response);
+                }
+            });
+        });
+    });
+    //function OnSuccess
+    function OnSuccess(response) {
+        var msg = $("#lblStatus");
+
+        switch (response) {
+            case "true":
+                msg.show();
+                msg.css("color","red");
+                msg.html("category Name already exists.");
+                $("#btn").attr("disabled", true);
+                break;
+            case "false":
+                msg.show();
+                msg.css("color","green");
+                msg.html("category Name Available");
+                $("#btn").attr("disabled", false);
+
+                break;
+            case "null":
+                msg.show();
+                msg.css("color", "red");
+                msg.html("category Name is required");
+                $("#btn").attr("disabled", false);
+                break;
+        }
+    }
+
+    </script>
+}

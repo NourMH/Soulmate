@@ -1,0 +1,107 @@
+﻿@model project74.Models.package
+@{ ViewBag.Title = "addpackages"; }
+<section id="vendors">
+    <div class="container">
+        <div class="row" style="margin-top:40px">
+            <h2 class="text-center">New Package</h2>
+            <div class="col-1"></div>
+            <div class="col-md-8 col-sm-11 col-lg-12">
+                <form class="form" method="post" enctype="multipart/form-data">
+                    <div class="form-group">
+                        <label style="color: gray;font-family: 'Dancing Script', cursive;font-size:20px">Package Name</label>
+                        @Html.TextBoxFor(n => n.p_name, new { @class = "form-control", style = "color:black;", id = "p_name", onchange = "checkPackageName(this)" })
+                        @*@Html.ValidationMessageFor(n => n.p_name, "", new { @class = "text-danger" })*@
+                        @if (ViewBag.pk != null)
+                        {
+                <label class="text-danger">package name is already taken</label>}
+                    </div>
+                    <div id="lblStatus" class="form-group"></div>
+
+
+                    <div class="form-group">
+                        <label style="color: gray;font-family: 'Dancing Script', cursive;font-size:20px">Package Description</label>
+                        @Html.TextAreaFor(n => n.p_desc, new { @class = "form-control", style = "color:black;resize:none" })
+                        @Html.ValidationMessageFor(n => n.p_desc, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group" style="color:black;">
+                        <label style="color: gray;font-family: 'Dancing Script', cursive;font-size:20px">Category</label>
+                        @*@Html.LabelFor(n => n.cat_id, new { style = "color:gray;" })*@
+                        @Html.DropDownListFor(n => n.cat_id, (SelectList)ViewBag.c, new { @style = "color:gray; width:99%; height:3em; border:1px solid #C4698A", @class = "form-group m-1" })
+                        @Html.ValidationMessageFor(n => n.cat_id, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label style="color: gray;font-family: 'Dancing Script', cursive;font-size:20px">Images</label>
+                        <input name="fileobj" type="file" style="color:black;" multiple required>
+                    </div>
+                    <hr>
+                    <div class="form-group">
+                        <input type="submit" value="Add" class="btn btn-danger text-white m-1" style="background-color: #C4698A" />
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</section>
+
+@section Scripts
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#p_name').on('keyup', function ()
+            {
+            $.ajax({
+                type: "POST",
+                url:'@Url.Action("checkpackage", "user")',//  this for calling the web method function in controller.
+                data: '{p_name: "' + $("#p_name").val()+ '" }',// user name value
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response);
+                }
+            });
+            });
+            $('#p_name').on('focus', function ()
+            {
+            $.ajax({
+                type: "POST",
+                url:'@Url.Action("checkpackage", "user")',//  this for calling the web method function in controller.
+                data: '{p_name: "' + $("#p_name").val()+ '" }',// user name value
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response);
+                }
+            });
+        });
+    });
+    //function OnSuccess
+    function OnSuccess(response) {
+        var msg = $("#lblStatus");
+
+        switch (response) {
+            case "true":
+                msg.show();
+                msg.css("color","red");
+                msg.html("package Name already exists.");
+                $("#btn").attr("disabled", true);
+                break;
+            case "false":
+                msg.show();
+                msg.css("color","green");
+                msg.html("package Name Available");
+                $("#btn").attr("disabled", false);
+
+                break;
+            case "null":
+                msg.show();
+                msg.css("color", "red");
+                msg.html("package Name is required");
+                $("#btn").attr("disabled", false);
+                break;
+        }
+    }
+
+    </script>
+}

@@ -1,0 +1,114 @@
+﻿@model project74.Models.user
+{
+    ViewBag.Title = "register";
+}
+
+
+
+    <div class="container" style="display:flex">
+        <div class="row" style="margin-top:40px">
+            @*<div class="col-1"></div>*@
+
+            <div class="col-lg-6 col-xl-6 col-md-6 col-sm-6 col-xs-12" style="margin-top:10px">
+                <form class="form" method="post" enctype="multipart/form-data">
+                    <h2 class="form_title title text-center">Create Account</h2>
+                    <div class="form-group">
+                        <label>First name</label>
+                        @Html.TextBoxFor(n => n.fname, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.fname, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Last name</label>
+                        @Html.TextBoxFor(n => n.lname, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.lname, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.username)
+                        @Html.TextBoxFor(n => n.username, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1", id = "username", onchange = "checkUserName(this)" })
+                        @Html.ValidationMessageFor(n => n.username, "", new { @class = "text-danger" })
+                    </div>
+                    <div id="lblStatus" class="form-group"></div>
+
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.password)
+                        @Html.PasswordFor(n => n.password, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.password, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        @Html.PasswordFor(n => n.confrim_pass, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.confrim_pass, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(n => n.mobile)
+                        @Html.TextBoxFor(n => n.mobile, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.mobile, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Location </label>
+                        <h6>Please enter your location link here</h6>
+                        @Html.TextBoxFor(n => n.loc, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.loc, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label>Address </label>
+                        @Html.TextBoxFor(n => n.Adress, new { @style = "color:black;width:99%;height:3em;border: 1px solid #C4698A;", @class = "form-group  m-1" })
+                        @Html.ValidationMessageFor(n => n.Adress, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        <label for="image_id" class="d-inline-block pl-2">Upload image</label>
+                        <input class="my-2 h-75" name="image_id" type="file">
+                        <br />
+                        <input type="submit" value="sign up" style="background-color: #C4698A;" id="btn" class="btn text-white m-1" />
+                    </div>
+                </form>
+            </div>
+            <div class="col-lg-5 col-md-5 col-sm-5 col-xs-10" >
+                <img src="~/attach/signup.jpg" style="width:100%;margin-top:90px;margin-left:30px" />
+            </div>
+        </div>
+       
+            </div>
+
+@section Scripts  
+{
+    <script type="text/javascript">
+        $(document).ready(function () {
+            $('#username').on('change', function () 
+            {
+            $.ajax({
+                type: "POST",
+                url:'@Url.Action("check", "User")',//  this for calling the web method function in controller.
+                data: '{userName: "' + $("#username").val()+ '" }',// user name value
+                contentType: "application/json; charset=utf-8",
+                dataType: "json",
+                success: OnSuccess,
+                failure: function (response) {
+                    alert(response);
+                }
+            });
+        });
+    });
+    //function OnSuccess
+    function OnSuccess(response) {
+        var msg = $("#lblStatus");
+        
+        switch (response) {
+            case "true":
+                msg.show();
+                msg.css("color","red");
+                msg.html("User Name Is Not Valid");
+                $("#btn").attr("disabled", true);
+                break;
+            case "false":
+                msg.show();
+                msg.css("color","green");
+                msg.html("User Name Available");
+                $("#btn").attr("disabled", false);
+
+                break;
+        }
+    }
+
+    </script>
+}

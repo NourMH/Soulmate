@@ -1,0 +1,38 @@
+﻿@model project74.Models.user
+@{
+    ViewBag.Title = "login";
+}
+<section id="vendors">
+    <div class="container">
+        <div class="row"   style="margin-top:40px">   
+           <h2 class="text-center">Login</h2>
+                <div class="col-lg-2 "></div>
+                <div class="col-lg-8">                  
+                    <form class="form" method="post" enctype="multipart/form-data">
+                        <div class="form-group">
+                           <label style="font-family: 'Dancing Script', cursive; font-size: 20px;">User Name</label>
+                            @*@Html.LabelFor(n => n.username)*@
+                            @Html.TextBoxFor(n => n.username, new { @class = "form-control", style = "color:black;" })
+                            @Html.ValidationMessageFor(n => n.username, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <label style="font-family: 'Dancing Script', cursive; font-size: 20px;">Password</label>
+                            @*@Html.LabelFor(n => n.password)*@
+                            @Html.PasswordFor(n => n.password, new { @class = "form-control", style = "color:black;" })
+                            @Html.ValidationMessageFor(n => n.password, "", new { @class = "text-danger" })
+                        </div>
+                        <div class="form-group">
+                            <input type="checkbox" name="rememberme" value="true" />&nbsp; Remember Me
+                        </div>
+                        <br />
+                        <div class="form-group">
+                            <input type="submit" value="Login" style="background-color: #C4698A;" class="btn text-white m-1" />
+                        </div>
+                            @if (ViewBag.status != null)
+                            {
+                                <p class="text-danger">@ViewBag.status</p>
+                            }
+                    </form>
+                </div>
+           
+            </div></div></section>

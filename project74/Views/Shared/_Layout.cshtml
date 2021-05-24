@@ -1,0 +1,139 @@
+﻿<!doctype html>
+<!--[if IE 7 ]>    <html lang="en-gb" class="isie ie7 oldie no-js"> <![endif]-->
+<!--[if IE 8 ]>    <html lang="en-gb" class="isie ie8 oldie no-js"> <![endif]-->
+<!--[if IE 9 ]>    <html lang="en-gb" class="isie ie9 no-js"> <![endif]-->
+<!--[if (gt IE 9)|!(IE)]><!-->
+<html lang="en-gb" class="no-js">
+<!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <!--[if lt IE 9]>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+        <![endif]-->
+    <title> Events </title>
+    <meta name="description" content="">
+    <meta name="author" content="WebThemez">
+    <!--[if lt IE 9]>
+            <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+        <![endif]-->
+    <!--[if lte IE 8]>
+            <script type="text/javascript" src="http://explorercanvas.googlecode.com/svn/trunk/excanvas.js"></script>
+        <![endif]-->
+    <link rel="stylesheet" href="/Content/css/bootstrap.min.css" />
+
+    <link rel="stylesheet" type="text/css" href="/Content/css/isotope.css" media="screen" />
+    <link rel="stylesheet" href="/Content/js/fancybox/jquery.fancybox.css" type="text/css" media="screen" />
+    <link href="/Content/css/animate.css" rel="stylesheet" media="screen">
+    <link href="/Content/flexslider/flexslider.css" rel="stylesheet" />
+    <link href="/Content/js/owl-carousel/owl.carousel.css" rel="stylesheet">
+    <link rel="stylesheet" href="/Content/css/styles.css" />
+    <!-- Font Awesome -->
+    <link href="/Content/font/css/font-awesome.min.css" rel="stylesheet">
+</head>
+<body>
+    <header class="header " style="background-color: #C4698A;">
+        <div class="container">
+            <nav class="navbar navbar-inverse " role="navigation">
+                <div class="navbar-header">
+                    <button type="button" id="nav-toggle" class="navbar-toggle" data-toggle="collapse" data-target="#main-nav"> <span class="sr-only">Toggle navigation</span> <span class="icon-bar"></span> <span class="icon-bar"></span> <span class="icon-bar"></span> </button>
+                    <a href="#" class="navbar-brand scroll-top logo  animated bounceInLeft"><b><i>Soulmate</i></b></a>
+                </div>
+                <!--/.navbar-header-->
+                <div id="main-nav" class="collapse navbar-collapse">
+                    <ul class="nav navbar-nav" id="mainNav">
+                        @if (Session["userid"] != null)
+                        {
+                            if (Session["usertype"] != null)
+                            {
+                                <li><a href="/Home/index" class="scroll-link">Home</a></li>
+                                <li><a href="/Category/index" class="scroll-link">Add Category</a></li>
+                                <li><a href="/Admin/ViewUsers" class="scroll-link">All Users</a></li>
+                                <li><a href="/Admin/ViewBlock" class="scroll-link">Blocked Users</a></li>
+                                <li><a href="/User/logout" class="scroll-link">Logout</a></li>
+
+
+                            }
+                            else
+                            {
+                                <li><a href="/Home/index" class="scroll-link">Home</a></li>
+                                <li><a href="/User/profile" class="scroll-link">Profile </a></li>
+                                <li><a href="/User/addcat" class="scroll-link">Add Category</a></li>
+                                <li><a href="/User/addpackages" class="scroll-link">Add package</a></li>
+                                <li><a href="/User/logout" class="scroll-link">Logout</a></li>
+
+
+                            }
+
+                        }
+                        else
+                        {
+                            <li><a href="/Home/index" class="scroll-link">Home</a></li>
+                            <li><a href="#vendors" class="scroll-link">VENDORS</a></li>
+                            <li><a href="#contactUs" class="scroll-link">Contact Us</a></li>
+                            <li><a href="/User/register" class="scroll-link">Sign UP</a></li>
+                            <li><a href="/User/login" class="scroll-link">LOG IN</a></li>
+                        }
+                    </ul>
+                </div>
+                <!--/.navbar-collapse-->
+            </nav>
+            <!--/.navbar-->
+        </div>
+        <!--/.container-->
+    </header>
+    <!--/.header-->
+
+
+
+    @RenderBody()
+
+    <section id="contactUs" class="contact-parlex">
+        <div class="parlex-back">
+            <div class="container">
+                <div class="heading wow fadeInUp animated" data-wow-duration="1000ms" data-wow-delay="300ms">
+                    <div class="row">
+                                    <h4>Contact us</h4>
+                                    <ul>
+                                        <li>Phone: +22 342 2345 345 | Fax: +22 724 2342 343 </li>
+                                        <li>Email: <a href="mailto:info@example.com" title="Email Us">info@example.com</a></li>
+                                        <li>Skype: <a href="skype:my.test?call" title="Skype us">my-company</a></li>
+                                    </ul>
+                                </div>
+                            </div>
+                            <div class="col-md-9">
+                                <!--NOTE: Update your email Id in "contact_me.php" file in order to receive emails from your contact form-->
+
+                            </div>
+                        </div>
+
+                    </div>
+
+    </section>
+    <!--/.container-->
+    <!--/.page-section-->
+    <section class="copyright">
+        <div class="container">
+
+            <!-- / .row -->
+        </div>
+    </section>
+    <a href="#top" class="topHome"><i class="fa fa-chevron-up fa-2x"></i></a>
+
+    <!--[if lte IE 8]><script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script><![endif]-->
+    <script src="/Content/js/modernizr-latest.js"></script>
+    <script src="/Content/js/jquery-1.8.2.min.js" type="text/javascript"></script>
+    <script src="/Content/js/bootstrap.min.js" type="text/javascript"></script>
+    <script src="/Content/js/jquery.isotope.min.js" type="text/javascript"></script>
+    <script src="/Content/js/fancybox/jquery.fancybox.pack.js" type="text/javascript"></script>
+    <script src="/Content/js/jquery.nav.js" type="text/javascript"></script>
+    <script src="/Content/js/jquery.fittext.js"></script>
+    <script src="/Content/js/waypoints.js"></script>
+    <script src="/Content/flexslider/jquery.flexslider.js"></script>
+    <script src="/Content/contact/jqBootstrapValidation.js"></script>
+    <script src="/Content/contact/contact_me.js"></script>
+    <script src="/Content/js/custom.js" type="text/javascript"></script>
+    <script src="/Content/js/owl-carousel/owl.carousel.js"></script>
+    @RenderSection("scripts", required: false)
+</body>
+</html>

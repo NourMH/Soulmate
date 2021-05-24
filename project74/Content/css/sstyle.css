@@ -1,0 +1,28 @@
+.img{
+    height: 500px;
+    width: 100%;
+    background-image: url(../images/banner2.jpg);
+    background-position: -106px;
+}
+body{
+    background-color: #ecf0f3;
+}
+.container{
+    background-color: #ecf0f3;
+}
+.btn{
+    background-color: #C4698A;
+}
+@media screen and (max-width: 992px) {
+    .img{
+        background-position: -221px;
+    }
+}
+@media screen and (max-width: 770px) {
+    .img{
+        display: none;
+    }
+    .w-sm-100{
+        width: 100%;
+    }
+}
